@@ -11,6 +11,8 @@
 		739C40B62B3D9556000C53EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C40B52B3D9556000C53EA /* ContentView.swift */; };
 		739C40B82B3D9558000C53EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 739C40B72B3D9558000C53EA /* Assets.xcassets */; };
 		739C40BB2B3D9558000C53EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 739C40BA2B3D9558000C53EA /* Preview Assets.xcassets */; };
+		739C40C22B3D97A7000C53EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C40C12B3D97A6000C53EA /* LibraryView.swift */; };
+		739C40C42B3DA931000C53EA /* LibraryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C40C32B3DA931000C53EA /* LibraryEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		739C40B52B3D9556000C53EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		739C40B72B3D9558000C53EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		739C40BA2B3D9558000C53EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		739C40C12B3D97A6000C53EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		739C40C32B3DA931000C53EA /* LibraryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +57,10 @@
 			children = (
 				739C40B32B3D9556000C53EA /* MousiqueApp.swift */,
 				739C40B52B3D9556000C53EA /* ContentView.swift */,
+				739C40C12B3D97A6000C53EA /* LibraryView.swift */,
 				739C40B72B3D9558000C53EA /* Assets.xcassets */,
 				739C40B92B3D9558000C53EA /* Preview Content */,
+				739C40C32B3DA931000C53EA /* LibraryEditView.swift */,
 			);
 			path = Mousique;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				739C40B62B3D9556000C53EA /* ContentView.swift in Sources */,
+				739C40C22B3D97A7000C53EA /* LibraryView.swift in Sources */,
+				739C40C42B3DA931000C53EA /* LibraryEditView.swift in Sources */,
 				739C40B42B3D9556000C53EA /* MousiqueApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
