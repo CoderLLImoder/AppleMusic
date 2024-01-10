@@ -8,54 +8,61 @@
 import SwiftUI
 
 struct Item: Hashable {
+    var isOn: Bool
     var icon: String
     var name: String
 }
 
 struct LibraryEditView: View {
     
-    let items = [
-        Item(icon: "music.note.list", name:"Плейлисты"),
-        Item(icon: "music.mic", name: "Артисты"),
-        Item(icon: "square.stack", name: "Альбомы"),
-        Item(icon: "music.note", name: "Песни"),
-        Item(icon: "tv", name: "Телешоу и фильмы"),
-        Item(icon: "music.note.tv", name: "Видеоклипы"),
-        Item(icon: "guitars", name: "Жанры"),
-        Item(icon: "person.2.crop.square.stack.fill", name: "Сборники"),
-        Item(icon: "music.quarternote.3", name: "Авторы"),
-        Item(icon: "arrow.down.circle", name: "Загружено")
+    var items = [
+        Item(isOn: false, icon: "music.note.list", name:"Плейлисты"),
+        Item(isOn: false, icon: "music.mic", name: "Артисты"),
+        Item(isOn: false, icon: "square.stack", name: "Альбомы"),
+        Item(isOn: false, icon: "music.note", name: "Песни"),
+        Item(isOn: false, icon: "tv", name: "Телешоу и фильмы"),
+        Item(isOn: false, icon: "music.note.tv", name: "Видеоклипы"),
+        Item(isOn: false, icon: "guitars", name: "Жанры"),
+        Item(isOn: false, icon: "person.2.crop.square.stack.fill", name: "Сборники"),
+        Item(isOn: false, icon: "music.quarternote.3", name: "Авторы"),
+        Item(isOn: false, icon: "arrow.down.circle", name: "Загружено")
     ]
     
-    let icons = ["music.note.list", "music.mic", "square.stack", "music.note", "tv", "music.note.tv", "guitars", "person.2.crop.square.stack.fill", "music.quarternote.3", "arrow.down.circle"]
-    
     var body: some View {
-        NavigationView {
+        ZStack {
             List {
                 ForEach(items, id: \.self)
                 {
                     item in
                     HStack {
-                        Toggle("", isOn: .constant(true))
-                        
+                        /*Circle()
+                         .stroke()
+                         .foregroundColor(.gray)
+                         .frame(width: 23, height: 23)
+                         .overlay {
+                         Image(systemName: LibraryEditView.isOn ? "checkmark.circle.fill" : "")
+                         .foregroundColor( .red)
+                         .imageScale(.large)
+                         }
+                         .onTapGesture {
+                         withAnimation(.spring()) {
+                         LibraryEditView.isOn.toggle()
+                         }
+                         }*/
                         Image(systemName: item.icon)
                             .foregroundColor(.red)
+                            .frame(width: 20)
+                            .padding(5)
                         Text (item.name)
                             .font(.title3)
+                            .padding(5)
                         
                     }
                 }
-            }
-            .navigationTitle("Медиатека")
-            .navigationBarItems(trailing: NavigationLink(destination: LibraryView(), label: {
-                Text("Готово")
                 
-            })
-                .padding(10)
-                .foregroundColor(.red))
+            }
+            .listStyle(.plain)
         }
-        .navigationBarBackButtonHidden()
-        
     }
 }
 

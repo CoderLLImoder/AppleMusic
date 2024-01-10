@@ -8,22 +8,32 @@
 import SwiftUI
 
 struct LibraryView: View {
+    
+    @State private var isEditingMode = false
+    
     var body: some View {
         NavigationView {
-            VStack{
-                Text("Ищете свою музыку?").font(.title2).bold()
-                Text("Здесь появится купленная Вами музыка.").font(.callout)
-                    .foregroundColor(.gray)
+            ZStack {
+                if isEditingMode {
+                    LibraryEditView()
+                } else {
+                    EmptyView()
+                }
             }
             .navigationTitle("Медиатека")
-            .navigationBarItems(trailing: NavigationLink(destination: LibraryEditView(), label: {
-                Text("Править")
-                    
+            .environment(\.editMode, .constant(EditMode.active))
+            .accentColor(.red)
+            
+            .navigationBarItems(trailing: Button(action: {isEditingMode.toggle()}, label: {
+                if isEditingMode {
+                    Text("Готово")
+                } else {
+                    Text("Править")
+                }
             })
                 .padding(10)
                 .foregroundColor(.red))
         }
-        .navigationBarBackButtonHidden()
     }
 }
     
