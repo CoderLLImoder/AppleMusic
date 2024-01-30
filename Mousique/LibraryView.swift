@@ -15,24 +15,28 @@ struct LibraryView: View {
         NavigationView {
             ZStack {
                 if isEditingMode {
-                    LibraryEditView()
+                    MediatekaView()
                 } else {
                     EmptyView()
                 }
             }
             .navigationTitle("Медиатека")
-            .environment(\.editMode, .constant(EditMode.active))
+            .environment(\.editMode, .constant(
+                isEditingMode ? EditMode.active : EditMode.inactive))
             .accentColor(.red)
             
-            .navigationBarItems(trailing: Button(action: {isEditingMode.toggle()}, label: {
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                isEditingMode.toggle()
+            }, label: {
                 if isEditingMode {
                     Text("Готово")
+                        .foregroundColor(.red)
                 } else {
                     Text("Править")
+                        .foregroundColor(.red)
                 }
-            })
-                .padding(10)
-                .foregroundColor(.red))
+            }))
         }
     }
 }

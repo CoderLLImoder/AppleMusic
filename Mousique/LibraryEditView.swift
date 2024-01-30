@@ -7,67 +7,53 @@
 
 import SwiftUI
 
-struct Item: Hashable {
-    var isOn: Bool
+struct Item: Identifiable {
+    var id = UUID().uuidString
     var icon: String
     var name: String
 }
 
-struct LibraryEditView: View {
+struct MediatekaView: View {
     
-    var items = [
-        Item(isOn: false, icon: "music.note.list", name:"Плейлисты"),
-        Item(isOn: false, icon: "music.mic", name: "Артисты"),
-        Item(isOn: false, icon: "square.stack", name: "Альбомы"),
-        Item(isOn: false, icon: "music.note", name: "Песни"),
-        Item(isOn: false, icon: "tv", name: "Телешоу и фильмы"),
-        Item(isOn: false, icon: "music.note.tv", name: "Видеоклипы"),
-        Item(isOn: false, icon: "guitars", name: "Жанры"),
-        Item(isOn: false, icon: "person.2.crop.square.stack.fill", name: "Сборники"),
-        Item(isOn: false, icon: "music.quarternote.3", name: "Авторы"),
-        Item(isOn: false, icon: "arrow.down.circle", name: "Загружено")
+    @State private var items: [Item] = [
+        Item(icon: "music.note.list", name:"Плейлисты"),
+        Item(icon: "music.mic", name: "Артисты"),
+        Item(icon: "square.stack", name: "Альбомы"),
+        Item(icon: "music.note", name: "Песни"),
+        Item(icon: "tv", name: "Телешоу и фильмы"),
+        Item(icon: "music.note.tv", name: "Видеоклипы"),
+        Item(icon: "guitars", name: "Жанры"),
+        Item(icon: "person.2.crop.square.stack.fill", name: "Сборники"),
+        Item(icon: "music.quarternote.3", name: "Авторы"),
+        Item(icon: "arrow.down.circle", name: "Загружено")
     ]
     
+    @State private var selection = Set<String>()
+    
     var body: some View {
-        ZStack {
-            List {
-                ForEach(items, id: \.self)
-                {
-                    item in
-                    HStack {
-                        /*Circle()
-                         .stroke()
-                         .foregroundColor(.gray)
-                         .frame(width: 23, height: 23)
-                         .overlay {
-                         Image(systemName: LibraryEditView.isOn ? "checkmark.circle.fill" : "")
-                         .foregroundColor( .red)
-                         .imageScale(.large)
-                         }
-                         .onTapGesture {
-                         withAnimation(.spring()) {
-                         LibraryEditView.isOn.toggle()
-                         }
-                         }*/
-                        Image(systemName: item.icon)
-                            .foregroundColor(.red)
-                            .frame(width: 20)
-                            .padding(5)
-                        Text (item.name)
-                            .font(.title3)
-                            .padding(5)
-                        
-                    }
+        List(selection: $selection, content: {
+            ForEach(items) { item in
+                HStack {
+                    Image(systemName: item.icon)
+                        .foregroundColor(.red)
+                        //.frame(width: 20)
+                        .padding(5)
+                    Text (item.name)
+                        .font(.title3)
+                        .padding(5)
+                    
                 }
-                
             }
-            .listStyle(.plain)
-        }
+            .onMove { indexSet, index in
+                self.items.move(fromOffsets: indexSet, toOffset: index)
+            }
+        })
+        .listStyle(.inset)
     }
 }
 
 struct LibraryEditView_Previews: PreviewProvider {
     static var previews: some View {
-        LibraryEditView()
+        LibraryView()
     }
 }
