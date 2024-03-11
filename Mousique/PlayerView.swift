@@ -53,6 +53,7 @@ struct PlayerView: View {
                     .font(.title2)
                     .foregroundColor(.primary)
             }
+            
             Button(action: {}) {
                 Image(systemName: "forward.fill")
                     .font(.title2)

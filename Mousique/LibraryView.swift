@@ -26,17 +26,20 @@ struct LibraryView: View {
             .accentColor(.red)
             
             .navigationBarItems(trailing:
-                                    Button(action: {
-                isEditingMode.toggle()
-            }, label: {
-                if isEditingMode {
-                    Text("Готово")
-                        .foregroundColor(.red)
-                } else {
-                    Text("Править")
-                        .foregroundColor(.red)
-                }
-            }))
+                Button(action:
+                            {
+                                isEditingMode.toggle()
+                            },
+                       label:
+                            {
+                                if isEditingMode {
+                                    Text("Готово")
+                                        .foregroundColor(.red)
+                                } else {
+                                    Text("Править")
+                                        .foregroundColor(.red)
+                                }
+                            }))
         }
     }
 }
