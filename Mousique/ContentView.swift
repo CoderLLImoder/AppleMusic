@@ -16,8 +16,7 @@ struct ContentView: View {
                         Image(systemName: "play.square.stack.fill")
                         Text("Медиатека")
                     }
-                
-                Text("Радио")
+                RadioView()
                     .tabItem {
                         Image(systemName: "radio.fill")
                         Text("Радио")
