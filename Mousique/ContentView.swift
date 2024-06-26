@@ -9,13 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom), content: {
+            TabView {
+                LibraryView()
+                    .tabItem {
+                        Image(systemName: "play.square.stack.fill")
+                        Text("Медиатека")
+                    }
+                RadioView()
+                    .tabItem {
+                        Image(systemName: "radio.fill")
+                        Text("Радио")
+                    }
+                
+                Text("Поиск")
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Поиск")
+                    }
+            }
+            .accentColor(.red)
+                
+            PlayerView()
+        })
     }
 }
 
